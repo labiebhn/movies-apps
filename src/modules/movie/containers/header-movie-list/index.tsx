@@ -58,7 +58,7 @@ const useStyles = () => {
       ...fonts.p,
       color: colors.text,
       textAlign: 'center',
-      width: '70%',
+      width: '80%',
     },
   });
 };

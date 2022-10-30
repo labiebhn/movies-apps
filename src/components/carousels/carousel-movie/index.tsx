@@ -24,10 +24,10 @@ const CarouselMovie: FC<CarouselMovieProps> = ({data, onSnapToItem}) => {
         width={width}
         height={width / 1.8}
         autoPlay={true}
-        autoPlayInterval={3000}
+        autoPlayInterval={3500}
         pagingEnabled={true}
         data={data}
-        scrollAnimationDuration={1500}
+        scrollAnimationDuration={1000}
         onSnapToItem={onSnapToItem}
         mode={'parallax'}
         renderItem={({item, index}) => {
