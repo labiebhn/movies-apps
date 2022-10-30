@@ -11,7 +11,7 @@ import {CollectionMovieType} from '../../../../types/container';
 import {PaginationStatus} from '../../../../types/service';
 import {fonts} from '../../../../utils/fonts';
 import {setImageUrl} from '../../../../utils/helpers';
-import {getMoviePopular, getMovieTopRated} from '../../store/movieThunk';
+import {getMovieNowPlaying, getMoviePopular, getMovieTopRated} from '../../store/movieThunk';
 
 export interface CollectionMovieProps {
   title?: string;
@@ -35,6 +35,9 @@ const CollectionMovie: FC<CollectionMovieProps> = ({type, title}) => {
         break;
       case 'popular':
         dispatch(getMoviePopular({params, paginate}));
+        break;
+      case 'nowPlaying':
+        dispatch(getMovieNowPlaying({params, paginate}));
         break;
       default:
         break;

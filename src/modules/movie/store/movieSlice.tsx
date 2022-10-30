@@ -1,18 +1,35 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 import {InitialState} from '../../../types/store';
-import {getMovieBanner, getMoviePopular, getMovieTopRated} from './movieThunk';
+import {
+  getMovieBanner,
+  getMovieNowPlaying,
+  getMovieOther,
+  getMoviePopular,
+  getMovieTopRated
+} from './movieThunk';
 
 interface MovieState {
   banner: InitialState;
+  nowPlaying: InitialState;
   topRated: InitialState;
   popular: InitialState;
+  other: InitialState;
 }
 
 const initialState: MovieState = {
   banner: {
     loading: 'idle',
     data: [],
+    message: '',
+  },
+  nowPlaying: {
+    loading: 'idle',
+    data: [],
+    pagination: {
+      page: 0,
+      total_pages: 0,
+    },
     message: '',
   },
   topRated: {
@@ -25,6 +42,15 @@ const initialState: MovieState = {
     message: '',
   },
   popular: {
+    loading: 'idle',
+    data: [],
+    pagination: {
+      page: 0,
+      total_pages: 0,
+    },
+    message: '',
+  },
+  other: {
     loading: 'idle',
     data: [],
     pagination: {
@@ -52,6 +78,25 @@ export const movieSlice = createSlice({
       state.banner.loading = 'failed';
       state.banner.data = [];
       state.banner.message = action.payload;
+    });
+
+    builder.addCase(getMovieNowPlaying.pending, (state, action) => {
+      state.nowPlaying.loading = 'pending';
+    });
+    builder.addCase(getMovieNowPlaying.fulfilled, (state, action) => {
+      if (action.payload) {
+        const {payload} = action;
+        state.nowPlaying.loading = 'succeeded';
+        state.nowPlaying.data = payload?.results;
+        state.nowPlaying.pagination = payload?.pagination;
+      } else {
+        state.nowPlaying.loading = 'succeeded';
+      }
+    });
+    builder.addCase(getMovieNowPlaying.rejected, (state, action) => {
+      state.nowPlaying.loading = 'failed';
+      state.nowPlaying.data = [];
+      state.nowPlaying.message = action.payload;
     });
 
     builder.addCase(getMovieTopRated.pending, (state, action) => {
@@ -90,6 +135,25 @@ export const movieSlice = createSlice({
       state.popular.loading = 'failed';
       state.popular.data = [];
       state.popular.message = action.payload;
+    });
+
+    builder.addCase(getMovieOther.pending, (state, action) => {
+      state.other.loading = 'pending';
+    });
+    builder.addCase(getMovieOther.fulfilled, (state, action) => {
+      if (action.payload) {
+        const {payload} = action;
+        state.other.loading = 'succeeded';
+        state.other.data = payload?.results;
+        state.other.pagination = payload?.pagination;
+      } else {
+        state.other.loading = 'succeeded';
+      }
+    });
+    builder.addCase(getMovieOther.rejected, (state, action) => {
+      state.other.loading = 'failed';
+      state.other.data = [];
+      state.other.message = action.payload;
     });
   },
 });

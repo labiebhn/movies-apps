@@ -1,1 +1,1 @@
-export type CollectionMovieType = 'topRated' | 'popular';
+export type CollectionMovieType = 'topRated' | 'popular' | 'nowPlaying';

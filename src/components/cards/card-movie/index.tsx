@@ -11,13 +11,14 @@ import {setImageUrl} from '../../../utils/helpers';
 export interface CardMovieProps {
   cover?: any;
   title?: string;
+  styleContainer?: any;
 }
 
-const CardMovie: FC<CardMovieProps> = ({cover, title}) => {
+const CardMovie: FC<CardMovieProps> = ({cover, title, styleContainer}) => {
   const styles = useStyles();
   const {colors} = useTheme();
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, styleContainer]}>
       <FastImage source={cover} style={styles.image} />
       {title ? (
         <LinearGradient colors={colors.gradientCard} style={styles.content}>
