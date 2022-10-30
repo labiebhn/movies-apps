@@ -1,12 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
 import {useTheme} from '@react-navigation/native';
 
 import {fonts} from '../../../../utils/fonts';
 
-const Splash = () => {
+const Splash = ({navigation}: any) => {
   const styles = useStyles();
+
+  useEffect(() => {
+    navigation?.replace('movie-list');
+  }, [navigation]);
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Movie Apps</Text>
