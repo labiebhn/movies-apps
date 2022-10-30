@@ -2,7 +2,7 @@ import React, {FC, useEffect} from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import {shallowEqual} from 'react-redux';
 
-import {useTheme} from '@react-navigation/native';
+import {useNavigation, useTheme} from '@react-navigation/native';
 
 import {CardMovie} from '../../../../components/cards';
 import {Gap} from '../../../../components/layouts';
@@ -20,6 +20,7 @@ export interface CollectionMovieProps {
 
 const CollectionMovie: FC<CollectionMovieProps> = ({type, title}) => {
   const styles = useStyles();
+  const navigation = useNavigation();
   const dispatch = useAppDispatch();
   const state = useAppSelector(state => state.movie[type], shallowEqual);
 
@@ -64,7 +65,15 @@ const CollectionMovie: FC<CollectionMovieProps> = ({type, title}) => {
         renderItem={({item, index}) => {
           return (
             <View style={styles.list}>
-              <CardMovie cover={{uri: setImageUrl(item?.poster_path)}} />
+              <CardMovie
+                cover={{uri: setImageUrl(item?.poster_path)}}
+                onPress={() =>
+                  navigation.navigate(
+                    'movie-detail' as never,
+                    {id: item?.id} as never,
+                  )
+                }
+              />
             </View>
           );
         }}

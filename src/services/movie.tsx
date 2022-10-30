@@ -21,3 +21,11 @@ export const getMovieLatest = (params: any) => {
 export const getMovieUpComing = (params: any) => {
   return axios.get(ENDPOINTS.MOVIE.GET_UPCOMING, {params});
 };
+
+export const getMovieDetail = (id: any) => {
+  return axios.get(ENDPOINTS.MOVIE.GET_DETAIL?.replace(':id', id));
+};
+
+export const getMovieSimilar = (id: any, params: any) => {
+  return axios.get(ENDPOINTS.MOVIE.GET_SIMILAR?.replace(':id', id), {params});
+};

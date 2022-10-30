@@ -1,10 +1,10 @@
 import React, {FC} from 'react';
-import {StyleSheet, Text, useWindowDimensions, View} from 'react-native';
+import {StyleSheet, Text, TouchableWithoutFeedback, useWindowDimensions, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import LinearGradient from 'react-native-linear-gradient';
 import Carousel from 'react-native-reanimated-carousel';
 
-import {useTheme} from '@react-navigation/native';
+import {useNavigation, useTheme} from '@react-navigation/native';
 
 import {fonts} from '../../../utils/fonts';
 
@@ -17,6 +17,7 @@ const CarouselMovie: FC<CarouselMovieProps> = ({data, onSnapToItem}) => {
   const styles = useStyles();
   const {colors} = useTheme();
   const {width} = useWindowDimensions();
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Carousel
@@ -32,18 +33,26 @@ const CarouselMovie: FC<CarouselMovieProps> = ({data, onSnapToItem}) => {
         mode={'parallax'}
         renderItem={({item, index}) => {
           return (
-            <View style={styles.card}>
-              <FastImage source={item?.path} style={styles.image} />
-              {item?.title ? (
-                <LinearGradient
-                  colors={colors.gradientCard}
-                  style={styles.content}>
-                  <Text style={styles.title} numberOfLines={2}>
-                    {item?.title}
-                  </Text>
-                </LinearGradient>
-              ) : null}
-            </View>
+            <TouchableWithoutFeedback
+              onPress={() =>
+                navigation.navigate(
+                  'movie-detail' as never,
+                  {id: item?.id} as never,
+                )
+              }>
+              <View style={styles.card}>
+                <FastImage source={item?.path} style={styles.image} />
+                {item?.title ? (
+                  <LinearGradient
+                    colors={colors.gradientCard}
+                    style={styles.content}>
+                    <Text style={styles.title} numberOfLines={2}>
+                      {item?.title}
+                    </Text>
+                  </LinearGradient>
+                ) : null}
+              </View>
+            </TouchableWithoutFeedback>
           );
         }}
       />

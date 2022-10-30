@@ -74,7 +74,7 @@ const useStyles = () => {
   return StyleSheet.create({
     container: {
       flex: 1,
-      padding: 16,
+      padding: 14,
     },
     list: {
       marginBottom: 12,

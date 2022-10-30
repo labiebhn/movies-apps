@@ -26,7 +26,7 @@ const Routes = () => {
     <NavigationContainer ref={navigationRef} theme={theme}>
       <Stack.Navigator
         screenOptions={{
-          animation: Platform.OS === 'android' ? 'fade_from_bottom' : 'default',
+          animation: Platform.OS === 'android' ? 'slide_from_right' : 'default',
           headerStyle: {backgroundColor: colors.container},
           headerTitleStyle: {
             ...fonts.h4,

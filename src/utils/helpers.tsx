@@ -2,10 +2,10 @@ import CONFIGS from '../configs';
 import {PaginationStatus} from '../types/service';
 import {PaginationState} from '../types/store';
 
-export const setImageUrl = (path: string) => {
+export const setImageUrl = (path: string, size: number = 500) => {
   let result = path;
-  if (path && !path?.includes(CONFIGS.BASE_URL)) {
-    result = `${CONFIGS.BASE_ASSET_URL}${path}`;
+  if (path && !path?.includes(CONFIGS.BASE_ASSET_URL)) {
+    result = `${CONFIGS.BASE_ASSET_URL}/w${size}/${path}`;
   }
   return result;
 };
@@ -62,4 +62,12 @@ export const hasNextPage = (paginate: PaginationState | undefined) => {
     result = paginate.page < paginate.total_pages;
   }
   return result;
+};
+
+export const setCurrency = (number: any) => {
+  if (number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  } else {
+    return '0';
+  }
 };

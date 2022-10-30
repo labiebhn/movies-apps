@@ -10,8 +10,7 @@ import {useAppDispatch, useAppSelector} from '../../../../store/hooks';
 import {PaginationStatus} from '../../../../types/service';
 import {fonts} from '../../../../utils/fonts';
 import {setImageUrl} from '../../../../utils/helpers';
-import {HeaderMovieList} from '../../containers';
-import CollectionMovie from '../../containers/collection-movie';
+import {CollectionMovie, HeaderMovieList} from '../../containers';
 import {getMovieOther} from '../../store/movieThunk';
 
 const MovieList = ({navigation}: any) => {
@@ -59,12 +58,13 @@ const MovieList = ({navigation}: any) => {
         ListFooterComponent={<Gap height={24} />}
         renderItem={({item, index}) => {
           return (
-            <View style={styles.list}>
-              <CardMovie
-                cover={{uri: setImageUrl(item?.poster_path)}}
-                styleContainer={styles.card}
-              />
-            </View>
+            <CardMovie
+              cover={{uri: setImageUrl(item?.poster_path)}}
+              type={'column-list'}
+              onPress={() =>
+                navigation?.navigate('movie-detail', {id: item?.id})
+              }
+            />
           );
         }}
       />
@@ -89,13 +89,6 @@ const useStyles = () => {
     },
     column: {
       paddingHorizontal: 4,
-    },
-    list: {
-      margin: 4,
-    },
-    card: {
-      width: cardWidth,
-      height: cardWidth + diffWidthHeight,
     },
     title: {
       ...fonts.h4,

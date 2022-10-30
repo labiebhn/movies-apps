@@ -6,9 +6,12 @@ import {useTheme} from '@react-navigation/native';
 
 const Gap = ({height = 0, width = 0, borderRadius = 4, isSkeleton = false}) => {
   const styles = useStyles();
+  const {colors} = useTheme();
 
   return isSkeleton ? (
-    <SkeletonPlaceholder>
+    <SkeletonPlaceholder
+      backgroundColor={colors.container}
+      highlightColor={colors.card}>
       <View style={{height, width, borderRadius}} />
     </SkeletonPlaceholder>
   ) : (
