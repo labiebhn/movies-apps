@@ -54,7 +54,7 @@ const useStyles = (type?: CardMovieType) => {
       width: type === 'column-list' ? cardWidth : 135,
       height: type === 'column-list' ? cardWidth + diffWidthHeight : 210,
       margin: type === 'column-list' ? 4 : 0,
-      borderRadius: 8,
+      borderRadius: type === 'column-list' ? 4 : 8,
       overflow: 'hidden',
       backgroundColor: colors.card,
     },

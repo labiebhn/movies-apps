@@ -13,7 +13,7 @@ export const routes = [
     key: 'movie-list',
     name: 'movie-list',
     component: MovieList,
-    options: {headerShown: false},
+    options: {headerShown: false, animation: 'fade'},
   },
   {
     key: 'movie-detail',
