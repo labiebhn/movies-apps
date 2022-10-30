@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
 
 import {useTheme} from '@react-navigation/native';
 
@@ -10,6 +11,7 @@ const Splash = ({navigation}: any) => {
 
   useEffect(() => {
     navigation?.replace('movie-list');
+    SplashScreen.hide();
   }, [navigation]);
 
   return (

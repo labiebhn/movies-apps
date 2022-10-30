@@ -36,6 +36,7 @@ const Routes = () => {
           },
           headerTitleAlign: 'center',
           headerBackTitleVisible: false,
+          contentStyle: {backgroundColor: colors.container},
         }}>
         {routes.map(item => (
           <Stack.Screen
