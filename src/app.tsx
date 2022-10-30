@@ -1,5 +1,6 @@
 import React from 'react';
 import {StatusBar, StyleSheet} from 'react-native';
+import {gestureHandlerRootHOC} from 'react-native-gesture-handler';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 import {useTheme} from '@react-navigation/native';
@@ -20,7 +21,7 @@ const App = () => {
   );
 };
 
-export default App;
+export default gestureHandlerRootHOC(App);
 
 const useStyles = () => {
   const {colors} = useTheme();

@@ -3,7 +3,11 @@ import axios, {AxiosError, AxiosRequestConfig, AxiosResponse} from 'axios';
 import CONFIGS from './';
 
 const onRequest = (config: AxiosRequestConfig): AxiosRequestConfig => {
-  config.baseURL = `${CONFIGS.BASE_URL}/${CONFIGS.API_KEY}`;
+  config.baseURL = `${CONFIGS.BASE_URL}`;
+  config.params = {
+    ...config.params,
+    api_key: CONFIGS.API_KEY,
+  };
   return config;
 };
 

@@ -1,0 +1,1 @@
+export type CollectionMovieType = 'topRated' | 'popular';
