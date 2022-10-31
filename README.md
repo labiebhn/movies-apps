@@ -1,6 +1,6 @@
 # Movies Apps
 
-My simple project with Flutter
+My simple project with React Native
 <!-- TODO: replace by a video intro -->
 
 ![Movies Apps Prototype](screenshots/1.png)
