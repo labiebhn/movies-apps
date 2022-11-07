@@ -7,7 +7,7 @@ My simple project with React Native
 
 ## Sample Apps
 
-<a href="https://drive.google.com/file/d/1DbTxVJ4VdskTFP1Y3bvo4OipuYB8q6ak/view?usp=sharing" target="_blank">Download APK File</a>
+<a href="https://drive.google.com/file/d/1HCtid0Vz5yg3WvnDT_5mXaRaj-yFY4eV/view?usp=sharing" target="_blank">Download APK File</a>
 
 ## How to install
 
