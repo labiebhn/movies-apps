@@ -5,6 +5,10 @@ My simple project with React Native
 
 ![Movies Apps Prototype](screenshots/1.png)
 
+## Sample Apps
+
+<a href="https://drive.google.com/file/d/1DbTxVJ4VdskTFP1Y3bvo4OipuYB8q6ak/view?usp=sharing" target="_blank">Download APK File</a>
+
 ## How to install
 
 **Step 1:**
